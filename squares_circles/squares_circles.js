@@ -1,11 +1,12 @@
-let squares_circles = []; // array of objects
-let amount = 20;
+let squares_circles = []; // Array of objects
+let amount = 20; // The amount of objects
 
 function setup() {
     createCanvas(1080, 1080);
     
-    let biggest_size = width > height ? height : width;
-    biggest_size *= 0.9; // max 80% of screen filled
+    // createCanvas(windowWidth, windowHeight); // Uncomment this line for max size in your browser
+    let biggest_size = width > height ? height : width; // The biggest possible size to fit on the canvas
+    biggest_size *= 0.9; // max 90% of screen filled
 
     // Create objects
     for (let i = 0; i < amount; i++) {
@@ -18,6 +19,7 @@ function setup() {
 
     frameRate(30);
 
+    // Set both render and download to true for automatically creating and downloading the gif file
     createLoop({duration:5, gif:{render:false, download:false, fileName:"square_circles.gif"}});
 }
 
@@ -87,8 +89,8 @@ class Square_Circle {
 
 function calculate_size(biggest_size, number) {
     size = biggest_size;
-    for (let i = 0; i < number; i++) {
-        size = sqrt(0.5*size**2);
+    for (let i = 0; i < number; i++) { // Repeate until you got the size for this specific object
+        size = sqrt(0.5*size**2); // Use the Pythagorean theorem to calculate the new size
     }
     return size;
 }
