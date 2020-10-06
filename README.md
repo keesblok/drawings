@@ -5,4 +5,4 @@
 ## Current drawings are
 
 ### Squares and circles
-![Squares and circles](./square_circles/square_circles.gif)
+![Squares and circles](./squares_circles/squares_circles.gif)

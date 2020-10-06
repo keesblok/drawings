@@ -1,4 +1,4 @@
-let square_circles = []; // array of objects
+let squares_circles = []; // array of objects
 let amount = 20;
 
 function setup() {
@@ -10,7 +10,7 @@ function setup() {
     // Create objects
     for (let i = 0; i < amount; i++) {
         size = calculate_size(biggest_size, i);
-        square_circles.push(new Square_Circle(i, size));
+        squares_circles.push(new Square_Circle(i, size));
     }
 
     strokeWeight(2);
@@ -23,10 +23,10 @@ function setup() {
 
 function draw() {
     background(255);
-    for (let i = 0; i < square_circles.length; i++) {
+    for (let i = 0; i < squares_circles.length; i++) {
         push();
-        square_circles[i].rotate(i*animLoop.theta*0.25);
-        square_circles[i].display();
+        squares_circles[i].rotate(i*animLoop.theta*0.25);
+        squares_circles[i].display();
         pop();
     }
 }
