@@ -2,9 +2,9 @@ let squares_circles = []; // Array of objects
 let amount = 20; // The amount of objects
 
 function setup() {
-    createCanvas(1080, 1080);
+    // createCanvas(1080, 1080);
     
-    // createCanvas(windowWidth, windowHeight); // Uncomment this line for max size in your browser
+    createCanvas(windowWidth, windowHeight); // Uncomment this line for max size in your browser
     let biggest_size = width > height ? height : width; // The biggest possible size to fit on the canvas
     biggest_size *= 0.9; // max 90% of screen filled
 
@@ -17,7 +17,7 @@ function setup() {
     strokeWeight(2);
     rectMode(CENTER);
 
-    frameRate(30);
+    frameRate(60);
 
     // Set both render and download to true for automatically creating and downloading the gif file
     createLoop({duration:5, gif:{render:false, download:false, fileName:"square_circles.gif"}});

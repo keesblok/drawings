@@ -1,10 +1,14 @@
 let squares_circles = []; // Array of objects
 let amount = 20; // The amount of objects
+let createGif = false;
 
 function setup() {
-    createCanvas(1080, 1080);
+    if (createGif) {
+        createCanvas(1080, 1080);
+    } else {    
+        createCanvas(windowWidth, windowHeight); // Uncomment this line for max size in your browser
+    }
     
-    //createCanvas(windowWidth, windowHeight); // Uncomment this line for max size in your browser
     let biggest_size = width > height ? height : width; // The biggest possible size to fit on the canvas
     biggest_size *= 0.9; // max 90% of screen filled
 
@@ -21,18 +25,24 @@ function setup() {
     frameRate(60);
 
     // Set both render and download to true for automatically creating and downloading the gif file
-    createLoop({duration:20, gif:{render:true, download:true, fileName:"square_circles.gif"}});
+    if (createGif) {
+        createLoop({duration:10, gif:{render:true, download:true, fileName:"square_circles_speeding_up.gif"}});
+        console.log("Gif enabled");
+    }
 }
 
 function draw() {
     background(0);
     for (let i = 0; i < squares_circles.length; i++) {
         push();
-        squares_circles[i].rotate(i*animLoop.theta**2*0.25);
-        // squares_circles[i].rotate(i*frameCount**sqrt(2)*0.25*0.01);
-        // if (i == squares_circles.length -1 ) {
-        //     console.log(i*frameCount**sqrt(2)*0.25*0.01);
-        // }
+        if (createGif) {
+            squares_circles[i].rotate(i*animLoop.theta**2*0.25);
+        } else {
+            squares_circles[i].rotate(i*frameCount**sqrt(2)*0.25*0.01);
+        }
+        if (i == squares_circles.length -1 ) {
+            console.log(i*frameCount**sqrt(2)*0.25*0.01);
+        }
         squares_circles[i].display();
         pop();
     }
