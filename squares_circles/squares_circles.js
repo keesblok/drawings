@@ -20,14 +20,15 @@ function setup() {
     frameRate(60);
 
     // Set both render and download to true for automatically creating and downloading the gif file
-    createLoop({duration:5, gif:{render:false, download:false, fileName:"square_circles.gif"}});
+    // createLoop({duration:5, gif:{render:false, download:false, fileName:"square_circles.gif"}});
 }
 
 function draw() {
     background(255);
     for (let i = 0; i < squares_circles.length; i++) {
         push();
-        squares_circles[i].rotate(i*animLoop.theta*0.25);
+        // squares_circles[i].rotate(i*animLoop.theta*0.25);
+        squares_circles[i].rotate(i*(TWO_PI*frameCount/60/5)*0.25);
         squares_circles[i].display();
         pop();
     }

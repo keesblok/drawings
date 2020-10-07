@@ -1,6 +1,8 @@
 let squares_circles = []; // Array of objects
 let amount = 20; // The amount of objects
 let createGif = false;
+let duration = 30;
+let fps = 60;
 
 function setup() {
     if (createGif) {
@@ -21,12 +23,12 @@ function setup() {
     strokeWeight(2);
     noFill();
     rectMode(CENTER);
-
-    frameRate(60);
+    
+    frameRate(fps);
 
     // Set both render and download to true for automatically creating and downloading the gif file
     if (createGif) {
-        createLoop({duration:10, gif:{render:true, download:true, fileName:"square_circles_speeding_up.gif"}});
+        createLoop({duration:duration, gif:{render:true, download:true, fileName:"square_circles_speeding_up.gif"}});
         console.log("Gif enabled");
     }
 }
@@ -35,13 +37,15 @@ function draw() {
     background(0);
     for (let i = 0; i < squares_circles.length; i++) {
         push();
+        let speed;
         if (createGif) {
-            squares_circles[i].rotate(i*animLoop.theta**2*0.25);
+            speed = i*animLoop.theta**sqrt(2);
         } else {
-            squares_circles[i].rotate(i*frameCount**sqrt(2)*0.25*0.01);
+            speed = i*(TWO_PI*frameCount/fps/duration)**sqrt(2);
         }
-        if (i == squares_circles.length -1 ) {
-            console.log(i*frameCount**sqrt(2)*0.25*0.01);
+        squares_circles[i].rotate(speed);
+        if (i == squares_circles.length -1) {
+            console.log(speed);
         }
         squares_circles[i].display();
         pop();
@@ -56,7 +60,7 @@ class Square {
     }
 
     rotate(rotation) {
-        this.rotation = rotation
+        this.rotation = rotation;
     }
 
     display() {
