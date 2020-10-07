@@ -91,7 +91,7 @@ class Square_Circle {
 function calculate_size(biggest_size, number) {
     size = biggest_size;
     for (let i = 0; i < number; i++) { // Repeate until you got the size for this specific object
-        size = sqrt(0.5*size**2); // Use the Pythagorean theorem to calculate the new size
+        size = size/sqrt(2); // Use 45 degree angle values (1, 1, sqrt(2))
     }
     return size;
 }
